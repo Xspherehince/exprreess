@@ -2,7 +2,8 @@ const express=require('express')
 require('dotenv').config()
 const db=require('./databse/connection')
 const bodyParser=require('body-parser')
-
+const morgan=require('morgan')
+const expressValidator=require('express-validator')
 
 
 const categoryRoute=require('./routes/categoryRoutes')
@@ -13,6 +14,8 @@ const app=express()
 
 // middleware
 app.use(bodyParser.json())
+app.use(morgan('dev'))
+app.use(expressValidator())
 
 
 //routes
